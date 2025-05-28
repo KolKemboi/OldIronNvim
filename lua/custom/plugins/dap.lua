@@ -29,6 +29,11 @@ return {
       local dap = require 'dap'
       local dapui = require 'dapui'
 
+      -- === Custom signs for breakpoints and debug states ===
+      vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = 'Error', linehl = '', numhl = '' })
+      vim.fn.sign_define('DapStopped', { text = '▶️', texthl = 'Success', linehl = 'Visual', numhl = 'Visual' })
+      vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'WarningMsg', linehl = '', numhl = '' })
+
       local map = vim.keymap.set
       local opts = { noremap = true, silent = true }
 
