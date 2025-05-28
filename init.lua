@@ -205,6 +205,56 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-----------------------------KOL--------------------------
+
+vim.opt.tabstop = 2 -- A tab is 4 spaces
+vim.opt.shiftwidth = 2 -- Indent by 4 spaces
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.smartindent = true
+
+vim.opt.relativenumber = true
+
+vim.keymap.set('n', '<leader>th', function()
+  vim.cmd 'botright split' -- Open at the bottom
+  vim.cmd 'resize 15' -- Optional: set terminal height
+  -- Close current buffer with <leader>c
+  -- Close current buffer with <leader>c
+  vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer' })
+  vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer' })
+  vim.cmd 'terminal' -- Open terminal
+  vim.cmd 'startinsert' -- Start in insert mode
+end, { desc = 'Open bottom terminal' })
+
+-- Open vertical split with <leader>pv
+vim.keymap.set('n', '<leader>s|', function()
+  vim.cmd 'vsplit'
+end, { desc = 'Vertical split' })
+
+-- Open horizontal split with <leader>ph
+vim.keymap.set('n', '<leader>s-', function()
+  vim.cmd 'split'
+end, { desc = 'Horizontal split' })
+
+-- Move to the right pane with ]p
+vim.keymap.set('n', ']p', '<C-w>l', { desc = 'Move to right pane' })
+
+-- Move to the left pane with [p
+vim.keymap.set('n', '[p', '<C-w>h', { desc = 'Move to left pane' })
+
+-- Move between vertical panes with -p
+vim.keymap.set('n', '-p', '<C-w>w', { desc = 'Cycle vertically through panes' })
+
+-- Up
+vim.keymap.set('n', '[P', '<C-w>k', { desc = 'Move to upper pane' })
+
+-- Down
+vim.keymap.set('n', ']P', '<C-w>j', { desc = 'Move to lower pane' })
+
+-- Close current pane (window) with <leader>c
+vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })
+-- Close current buffer with <leader>c
+vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -984,7 +1034,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
