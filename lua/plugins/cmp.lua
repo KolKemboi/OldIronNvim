@@ -30,8 +30,8 @@ return {
       opts.mapping = cmp.mapping.preset.insert({
         ["<C-Space>"] = cmp.mapping.complete(),                       -- Show completion menu
         ["<Tab>"] = cmp.mapping.confirm({ select = true }),          -- Accept suggestion
-        ["<C-Tab>"] = cmp.mapping.select_next_item(),                -- Next item
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),                -- Previous item
+        ["<S-Tab>"] = cmp.mapping.select_next_item(),                -- Next item
+        ["<C-Tab>"] = cmp.mapping.select_prev_item(),                -- Previous item
         ["<C-e>"] = cmp.mapping.abort(),                             -- Cancel
         ["<CR>"] = cmp.mapping.confirm({ select = false }),          -- Confirm if explicitly selected
       })
