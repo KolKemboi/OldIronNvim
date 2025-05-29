@@ -69,7 +69,7 @@ vim.o.inccommand = 'split'
 -- Show which line your cursor is on
 vim.o.cursorline = true
 
-vim.o.scrolloff = 10
+vim.o.scrolloff = 20
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -95,10 +95,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -135,16 +135,6 @@ vim.keymap.set('n', '<leader>th', function()
   vim.cmd 'startinsert' -- Start in insert mode
 end, { desc = 'Open bottom terminal' })
 
--- Open vertical split with <leader>pv
-vim.keymap.set('n', '<leader>s|', function()
-  vim.cmd 'vsplit'
-end, { desc = 'Vertical split' })
-
--- Open horizontal split with <leader>ph
-vim.keymap.set('n', '<leader>s-', function()
-  vim.cmd 'split'
-end, { desc = 'Horizontal split' })
-
 -- Move to the right pane with ]p
 vim.keymap.set('n', ']p', '<C-w>l', { desc = 'Move to right pane' })
 
@@ -161,9 +151,9 @@ vim.keymap.set('n', '[P', '<C-w>k', { desc = 'Move to upper pane' })
 vim.keymap.set('n', ']P', '<C-w>j', { desc = 'Move to lower pane' })
 
 -- Close current pane (window) with <leader>c
-vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })
+-- vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })
 -- Close current buffer with <leader>c
-vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer' })
+-- vim.keymap.set('n', '<leader>c', ':bd<CR>', { desc = 'Close buffer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -395,7 +385,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
