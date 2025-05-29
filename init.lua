@@ -145,10 +145,10 @@ vim.keymap.set('n', '[p', '<C-w>h', { desc = 'Move to left pane' })
 vim.keymap.set('n', '-p', '<C-w>w', { desc = 'Cycle vertically through panes' })
 
 -- Up
-vim.keymap.set('n', '[P', '<C-w>k', { desc = 'Move to upper pane' })
+vim.keymap.set('n', '[o', '<C-w>k', { desc = 'Move to upper pane' })
 
 -- Down
-vim.keymap.set('n', ']P', '<C-w>j', { desc = 'Move to lower pane' })
+vim.keymap.set('n', ']o', '<C-w>j', { desc = 'Move to lower pane' })
 
 -- Close current pane (window) with <leader>c
 -- vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })

@@ -11,7 +11,30 @@ return {
         'rcarriga/nvim-dap-ui',
         config = function()
           local dap, dapui = require 'dap', require 'dapui'
-          dapui.setup()
+
+          -- ✅ Updated dapui.setup with explicit layouts
+          dapui.setup {
+            layouts = {
+              {
+                elements = {
+                  { id = 'scopes', size = 0.33 },
+                  { id = 'breakpoints', size = 0.17 },
+                  { id = 'stacks', size = 0.25 },
+                  { id = 'watches', size = 0.25 },
+                },
+                size = 40, -- width
+                position = 'left',
+              },
+              {
+                elements = {
+                  { id = 'repl', size = 0.5 },
+                  { id = 'console', size = 0.5 },
+                },
+                size = 10, -- height
+                position = 'bottom',
+              },
+            },
+          }
 
           dap.listeners.after.event_initialized['dapui_config'] = function()
             dapui.open()
@@ -54,6 +77,33 @@ return {
       map('n', '<leader>bl', dap.run_last, { desc = 'Run Last Debug Session', noremap = true, silent = true })
 
       -- Example adapter for Python debugging
+      dap.adapters.cppdbg = {
+        id = 'cppdbg',
+        type = 'executable',
+        command = vim.fn.stdpath 'data' .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+      }
+
+      dap.configurations.cpp = {
+        {
+          name = 'Launch file',
+          type = 'cppdbg',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopOnEntry = true,
+          setupCommands = {
+            {
+              text = '-enable-pretty-printing',
+              description = 'Enable GDB pretty printing',
+              ignoreFailures = false,
+            },
+          },
+        },
+      }
+
+      dap.configurations.c = dap.configurations.cpp
       dap.adapters.python = {
         type = 'executable',
         command = 'python',
