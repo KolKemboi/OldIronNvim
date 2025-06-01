@@ -1,4 +1,4 @@
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+-- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -124,7 +124,7 @@ vim.opt.smartindent = true
 
 vim.opt.relativenumber = true
 
-vim.keymap.set('n', '<leader>th', function()
+vim.keymap.set('n', '<leader>ts', function()
   vim.cmd 'botright split' -- Open at the bottom
   vim.cmd 'resize 15' -- Optional: set terminal height
   -- Close current buffer with <leader>c
@@ -149,6 +149,9 @@ vim.keymap.set('n', '[o', '<C-w>k', { desc = 'Move to upper pane' })
 
 -- Down
 vim.keymap.set('n', ']o', '<C-w>j', { desc = 'Move to lower pane' })
+
+vim.keymap.set('n', 'l', 'w', { noremap = true })
+vim.keymap.set('n', 'h', 'b', { noremap = true })
 
 -- Close current pane (window) with <leader>c
 -- vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })
@@ -758,6 +761,7 @@ require('lazy').setup({
         },
         opts = {},
       },
+
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
@@ -926,8 +930,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
