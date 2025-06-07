@@ -29,6 +29,12 @@ return {
     vim.keymap.set('n', '<leader>4', function()
       harpoon:list():select(4)
     end, { desc = 'Harpoon to File 4' })
+    vim.keymap.set('n', '<leader>5', function()
+      harpoon:list():select(5)
+    end, { desc = 'Harpoon to File 5' })
+    vim.keymap.set('n', '<leader>6', function()
+      harpoon:list():select(6)
+    end, { desc = 'Harpoon to File 6' })
 
     -- Optional: Open with Telescope
     vim.keymap.set('n', '<leader>hf', ':Telescope harpoon marks<CR>', { desc = 'Telescope Harpoon Files' })
