@@ -38,7 +38,7 @@ return {
     lazy = false,
     keys = {
       {
-        '<leader>fb',
+        '<leader>tb',
         '<cmd>Oil --float<CR>',
         desc = 'File Buffer (Oil)',
       },

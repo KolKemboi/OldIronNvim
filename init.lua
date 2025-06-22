@@ -154,6 +154,10 @@ vim.keymap.set('n', ']o', '<C-w>j', { desc = 'Move to lower pane' })
 vim.keymap.set('n', 'l', 'w', { noremap = true })
 vim.keymap.set('n', 'h', 'b', { noremap = true })
 
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.autoindent = true
+
 -- Close current pane (window) with <leader>c
 -- vim.keymap.set('n', '<leader>c', '<C-w>c', { desc = 'Close current window' })
 -- Close current buffer with <leader>c
@@ -924,8 +928,18 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
+      -- Autoinstall languages that ar not installed
+      auto_install = false,
+
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<Enter>', -- set to `false` to disable one of the mappings
+          node_incremental = '<Enter>',
+          scope_incremental = false,
+          node_decremental = '<BackSpace>',
+        },
+      },
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
