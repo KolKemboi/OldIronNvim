@@ -1,4 +1,9 @@
 return {
+  -------------------------- ICONS ------------------------
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true,
+  },
   --------------------------LOADING SCREEN ------------------------
   {
     'goolord/alpha-nvim',
@@ -87,5 +92,92 @@ return {
       -- optional: setup notify as backend
       vim.notify = require 'notify'
     end,
+  },
+  -----------------------INCLINE------------------
+
+  {
+    'b0o/incline.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('incline').setup {
+        highlight = {
+          groups = {
+            InclineNormal = { default = true, group = 'CursorLine' },
+            InclineNormalNC = { default = true, group = 'CursorLine' },
+          },
+        },
+        window = {
+          margin = {
+            vertical = 0,
+            horizontal = 1,
+          },
+          options = {
+            signcolumn = 'no',
+            wrap = false,
+          },
+          padding = 1,
+          placement = {
+            vertical = 'top',
+            horizontal = 'right',
+          },
+        },
+      }
+    end,
+  },
+  ---------------------------LUA LINE----------------------
+
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        options = {
+          icons_enabled = true,
+          theme = 'auto', -- Or 'gruvbox', 'tokyonight', etc.
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+          disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+          },
+          always_divide_middle = true,
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { { 'filename', path = 0 } }, -- 0: just filename, 1: relative path
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { { 'filename', path = 1 } },
+          lualine_x = { 'location' },
+          lualine_y = {},
+          lualine_z = {},
+        },
+        tabline = {},
+        winbar = {},
+        inactive_winbar = {},
+        extensions = { 'nvim-tree', 'quickfix', 'fugitive', 'lazy' },
+      }
+    end,
+  },
+  ----------------------------GIT SIGNS--------------------------
+
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
   },
 }

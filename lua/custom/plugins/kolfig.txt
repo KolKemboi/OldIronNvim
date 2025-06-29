@@ -1,0 +1,10 @@
+<L> = leader
+
+
+<L>gw = grep word
+<L>gr = go to reference
+<L>gd = go to definition
+<L>ca = code action
+<L>rb = rename buffer
+<L>gi = go to implementation
+
